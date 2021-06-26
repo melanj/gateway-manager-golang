@@ -63,5 +63,5 @@ func DeleteGateway(c *gin.Context) {
 
 	models.DB.Delete(&gateway)
 
-	c.JSON(http.StatusNoContent, gin.H{"data": true})
+	c.JSON(http.StatusNoContent, nil)
 }

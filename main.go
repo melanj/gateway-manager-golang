@@ -35,6 +35,10 @@ func main() {
 	r.POST("/api/gateways", controllers.CreateGateway)
 	r.GET("/api/gateways/:id", controllers.FindGateway)
 	r.DELETE("/api/gateways/:id", controllers.DeleteGateway)
+	r.GET("/api/devices", controllers.FindDevices)
+	r.POST("/api/devices", controllers.CreateDevice)
+	r.GET("/api/devices/:id", controllers.FindDevice)
+	r.DELETE("/api/devices/:id", controllers.DeleteDevice)
 
 	r.Run(":8080")
 }
