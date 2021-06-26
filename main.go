@@ -1,8 +1,8 @@
 package main
 
 import (
-	"awesomeProject/controllers"
-	"awesomeProject/models"
+	"gatewayManager/controllers"
+	"gatewayManager/models"
 	"github.com/gin-gonic/gin"
 	"io"
 	"os"

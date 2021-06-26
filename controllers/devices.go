@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"awesomeProject/models"
+	"gatewayManager/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
