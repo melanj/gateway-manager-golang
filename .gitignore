@@ -1,0 +1,12 @@
+HELP.md
+dist/
+*.log
+node_modules/
+front-end/dist
+front-end/node_modules
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
