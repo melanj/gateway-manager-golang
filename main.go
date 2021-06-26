@@ -32,7 +32,9 @@ func main() {
 	})
 
 	r.GET("/api/gateways", controllers.FindGateways)
-	r.POST("/api/gateways", controllers.CreateBook)
+	r.POST("/api/gateways", controllers.CreateGateway)
+	r.GET("/api/gateways/:id", controllers.FindGateway)
+	r.DELETE("/api/gateways/:id", controllers.DeleteGateway)
 
 	r.Run(":8080")
 }

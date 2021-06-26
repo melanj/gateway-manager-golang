@@ -13,7 +13,7 @@ type CreateGatewayInput struct {
 	IPv4Address string `json:"ipv4Address"`
 }
 
-// FindGateways GET /gateways
+// FindGateways GET /api/gateways
 // Get all gateways
 func FindGateways(c *gin.Context) {
 	var gateways []models.Gateway
@@ -22,7 +22,9 @@ func FindGateways(c *gin.Context) {
 	c.JSON(http.StatusOK, gateways)
 }
 
-func CreateBook(c *gin.Context) {
+// CreateGateway POST /api/gateways
+// Create new gateway
+func CreateGateway(c *gin.Context) {
 	// Validate input
 	var input CreateGatewayInput
 	if err := c.ShouldBindJSON(&input); err != nil {
@@ -35,4 +37,31 @@ func CreateBook(c *gin.Context) {
 	models.DB.Create(&gateway)
 
 	c.JSON(http.StatusOK, gateway)
+}
+
+// FindGateway GET /api/gateways/:id
+// Find a gateway
+func FindGateway(c *gin.Context) {
+	var gateway models.Gateway
+
+	if err := models.DB.Where("id = ?", c.Param("id")).First(&gateway).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gateway)
+}
+
+// DeleteGateway DELETE /api/gateways/:id
+// Delete a gateway
+func DeleteGateway(c *gin.Context) {
+	var gateway models.Gateway
+	if err := models.DB.Where("id = ?", c.Param("id")).First(&gateway).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	models.DB.Delete(&gateway)
+
+	c.JSON(http.StatusNoContent, gin.H{"data": true})
 }
